@@ -41,18 +41,21 @@ public class client {
            // String message2 = in.readLine();
             String message2=scanner.nextLine();
             if(message2.equalsIgnoreCase("exit")){
+                o.println(message2);
+                o.flush();
                 break;
             }
             o.println(message2);
             o.flush();
         }
-        //feermeture des ressources
+        //fermeture des ressources
+        if(in.readLine()!=null){
         o.close();
         in.close();
         s.close();
         scanner.close();
-            System.out.println("Connexion fermée.");
-            System.out.flush();
+        System.out.println("Connexion fermée.");
+        System.out.flush();}
 
     }
     catch (UnknownHostException e)//c'est vous avez l'add ip mich hiya w ella serveur mabdach ma7alich socket

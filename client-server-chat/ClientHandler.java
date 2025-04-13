@@ -39,6 +39,8 @@ public void run(){
     while(socket.isConnected()){
         try{
             messageFromClient=bufferedReader.readLine();
+            if(messageFromClient.equalsIgnoreCase("exit")||messageFromClient==null)
+           { closeEverything(socket,bufferedReader,bufferedWriter);break;}
             if(messageFromClient!=null){
             System.out.println("Message de "+clientusername+": "+messageFromClient);
             System.out.flush();
@@ -81,7 +83,7 @@ public void sendMessage(String messageToSend){
 public void removeClientHandler(){
     clientHandlers.remove(this);
     //broadcastMessage("SERVER: "+clientusername+"has left the chat !");
-    sendMessage("SERVER: "+clientusername+"has left the chat !");
+    sendMessage("SERVER: "+clientusername+" has left the chat !");
 }
 public void closeEverything(Socket socket,BufferedReader bufferedReader,BufferedWriter bufferedWriter){
     removeClientHandler();
