@@ -10,8 +10,8 @@ public class ClientHandler implements Runnable{
     
 public static ArrayList <ClientHandler> clientHandlers = new ArrayList<>();
 private Socket socket;
-public BufferedReader bufferedReader;
-public BufferedWriter bufferedWriter;
+private BufferedReader bufferedReader;
+private BufferedWriter bufferedWriter;
 private String clientusername;
 public ClientHandler(Socket socket){
     try{
