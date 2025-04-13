@@ -13,35 +13,55 @@ public class client {
         Socket s=new Socket("127.0.0.1",12346);
         InputStream is = s.getInputStream();
         OutputStream os = s.getOutputStream();
-        PrintWriter o = new PrintWriter(os, true);
+        PrintWriter o = new PrintWriter(new BufferedWriter(new OutputStreamWriter(os)));
         BufferedReader in = new BufferedReader(new InputStreamReader(is,"UTF-8"),8192);
-        String message2 = in.readLine();
-        if(message2!= null && !message2.trim().isEmpty()){
-        System.out.println("entrer votre message : ");
-        System.out.flush();
-            Scanner scanner = new Scanner(System.in);
-            String message = scanner.nextLine();
-            scanner.close();
-            
-            o.println(message);
+        Scanner scanner=new Scanner(System.in);
+        System.out.println("entrer votre nom d'utilisateur: ");//demander et envoyer le nom de l'utilisateur
+        String username=scanner.nextLine();
+        o.println(username);
+        o.flush();
+        Thread receiveThread=new Thread(() ->{//thread pour recevoir les messages de serveur
+            try{
+                String message;
+                while((message=in.readLine())!= null){
+                    System.out.println(message);
+                }
+            }catch (IOException e){
+                System.out.println("connexion au serveur perdue. ");
+                e.printStackTrace();;
+            }
+        });
+        receiveThread.start();
+
+        //boucle principale pour envoyer des messages
+        System.out.println("Vous pouvez maintenant envoyer des messages (tapez 'exit' pour quitter):"); 
+
+        
+        while(true){
+           // String message2 = in.readLine();
+            String message2=scanner.nextLine();
+            if(message2.equalsIgnoreCase("exit")){
+                break;
+            }
+            o.println(message2);
             o.flush();
-            System.out.println("Message envoyé au serveur : " + message);
-            System.out.flush();
-            String reponse = in.readLine();
-            System.out.println("Réponse du serveur : " + reponse);
-            System.out.flush();
-            s.close();
+        }
+        //feermeture des ressources
+        o.close();
+        in.close();
+        s.close();
+        scanner.close();
             System.out.println("Connexion fermée.");
-            System.out.flush();}
+            System.out.flush();
 
     }
     catch (UnknownHostException e)//c'est vous avez l'add ip mich hiya w ella serveur mabdach ma7alich socket
-    {
+    {   System.out.println("Adresse IP du serveur invalide");
         e.printStackTrace();
     }
     catch (IOException e){
+        System.out.println("Erreur de connexion ou de communication");
         e.printStackTrace();
     }
     
-}
-}
+}}
