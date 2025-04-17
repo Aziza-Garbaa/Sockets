@@ -12,13 +12,13 @@ This repository contains two basic Java TCP socket applications built to demonst
   - The **server** receives it, multiplies it by 2, and sends back the result
 - Useful for learning basic socket communication and data handling with streams
 
-### 2. 💬 Multi-Client-Server Chat(one-to-one)
-- A simple **private chat system** between server and each client
-- Features:
-  - Supports multiple client connections via multithreading
-  - The **server maintains a list** of all connected clients
-   - The server can **respond individually** to each client by selecting their number from a list
-  - Real-time bidirectional messaging
+### 2.💬 Multi-Client Private Chat
+-A simple private messaging system between clients
+-Features:
+  -Supports multiple client connections via multithreading
+  -The server maintains a list of all connected clients
+  -Clients can send private messages to other clients using a specific format (e.g., @username message)
+  -Real-time bidirectional messaging
   -Clean client disconnection handling
 
 ## 🧠 Key Concepts Covered

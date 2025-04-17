@@ -13,12 +13,13 @@ public class client {
         Socket s=new Socket("127.0.0.1",12346);
         InputStream is = s.getInputStream();
         OutputStream os = s.getOutputStream();
-        PrintWriter o = new PrintWriter(new BufferedWriter(new OutputStreamWriter(os)));
+        BufferedWriter o = new BufferedWriter(new OutputStreamWriter(os));
         BufferedReader in = new BufferedReader(new InputStreamReader(is,"UTF-8"),8192);
         Scanner scanner=new Scanner(System.in);
         System.out.println("entrer votre nom d'utilisateur: ");//demander et envoyer le nom de l'utilisateur
         String username=scanner.nextLine();
-        o.println(username);
+        o.write(username);
+        o.newLine();
         o.flush();
         Thread receiveThread=new Thread(() ->{//thread pour recevoir les messages de serveur
             try{
@@ -32,20 +33,19 @@ public class client {
             }
         });
         receiveThread.start();
-
         //boucle principale pour envoyer des messages
         System.out.println("Vous pouvez maintenant envoyer des messages (tapez 'exit' pour quitter):"); 
-
-        
         while(true){
            // String message2 = in.readLine();
             String message2=scanner.nextLine();
             if(message2.equalsIgnoreCase("exit")){
-                o.println(message2);
+                o.write(message2);
+                o.newLine();
                 o.flush();
                 break;
             }
-            o.println(message2);
+            o.write(message2);
+            o.newLine();
             o.flush();
         }
         //fermeture des ressources
@@ -56,9 +56,8 @@ public class client {
         scanner.close();
         System.out.println("Connexion fermée.");
         System.out.flush();}
-
     }
-    catch (UnknownHostException e)//c'est vous avez l'add ip mich hiya w ella serveur mabdach ma7alich socket
+    catch (UnknownHostException e)
     {   System.out.println("Adresse IP du serveur invalide");
         e.printStackTrace();
     }
