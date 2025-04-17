@@ -2,7 +2,7 @@
 
 Ce dépôt contient des applications simples utilisant les sockets en Java (TCP et UDP), conçues pour illustrer les principes fondamentaux de la communication client-serveur. Chaque exemple est minimaliste, pédagogique et vise à montrer la différence entre TCP et UDP.
 ## 📚 About Us  
-Ce projet a ete develope par  .👨‍💻 
+Ce projet a été developé par  :👨‍💻 
 **Le trinome:** 
 
 1️⃣**Amira El manaa**    2️⃣**Aziza Garbâa**    3️⃣**Islem Briki** 
