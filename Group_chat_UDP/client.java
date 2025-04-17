@@ -123,7 +123,7 @@ public class client {
             }
         }
     }
-    // la fonction runnable passe au thread  qui écoute les messages du groupe multicast
+    //la fonction runnable passe au thread  qui écoute les messages du groupe multicast
     private static void listentogroup() {
         try {
             byte[] buf = new byte[256];

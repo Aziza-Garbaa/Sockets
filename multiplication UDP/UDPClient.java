@@ -7,7 +7,7 @@ public class UDPClient {
     public static void main(String[] args) throws Exception {
         DatagramSocket ds = new DatagramSocket(); 
         // On crée une socket UDP pour le client (le port sera attribué automatiquement si on ne l'indique pas)
-        Scanner scanner = new Scanner(System.in); // On crée un scanner pour lire l'entrée de l'utilisateur
+        Scanner scanner = new Scanner(System.in); //On crée un scanner pour lire l'entrée de l'utilisateur
         System.out.println("Entrez un entier :");
         int nb = scanner.nextInt(); // On lit un entier entré par l'utilisateur
         scanner.close(); 

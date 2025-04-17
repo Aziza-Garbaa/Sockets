@@ -22,7 +22,7 @@ public class server {
             this.port = port;
         }
     }
-    // Fonction principale du serveur qui écoute les messages des clients et gère les connexions
+    //Fonction principale du serveur qui écoute les messages des clients et gère les connexions
     // et déconnexions. Elle utilise un socket UDP pour recevoir les messages et les traiter.
     public static void main(String[] args) throws IOException {
         socket = new DatagramSocket(PORT);// Création du socket UDP pour communication directe avec le serveur

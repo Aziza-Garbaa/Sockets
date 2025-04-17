@@ -9,7 +9,7 @@ public class UDPServer {
         byte[] buffer = new byte[1024]; 
         // On crée un tableau de bytes pour stocker la réponse du serveur (1024 bytes ici, mais on peut choisir une taille différente)
         DatagramPacket receivePacket = new DatagramPacket(buffer, buffer.length);
-        // On crée un paquet pour recevoir les données depuis le client
+        //On crée un paquet pour recevoir les données depuis le client
         // Le paquet contient le buffer (le tableau de bytes) et sa taille (buffer.length)
         // Le paquet va être utilisé pour recevoir les données envoyées par le client
         System.out.println("Serveur UDP en attente d'un message...");
